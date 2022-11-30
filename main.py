@@ -1,11 +1,14 @@
 import cv2
 import pytesseract
 
+# Nurodomas kelias iki Tesseract
 pytesseract.pytesseract.tesseract_cmd = r"C:\\Program Files (x86)\\Tesseract\\tesseract.exe"
 
-font_scale = 1
+# Nustatomas šriftas OpenCV tekstui
+font_scale = 2
 font = cv2.FONT_HERSHEY_PLAIN
 
+# Nustatomas vaizdo šaltinis
 cap = cv2.VideoCapture(0)
 
 if not cap.isOpened():
@@ -13,6 +16,7 @@ if not cap.isOpened():
 if not cap.isOpened():
     raise IOError("Cannot open camera")
 
+# Paleidžiamas ciklas kuris skaito kiekvieną video kadrą
 while True:
     ret, frame = cap.read()
     imgW, imgH, _ = frame.shape
